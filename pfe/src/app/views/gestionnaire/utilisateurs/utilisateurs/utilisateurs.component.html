@@ -1,0 +1,170 @@
+<div class="content">
+  <div class="blue-background text-center font-size-large">
+    Université de Jendouba
+  </div><br><br>
+  <div class="animated fadeIn">
+    <div class="row">
+      <!-- Gestionnaires -->
+      <section class="intro">
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+        
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Table Gestionnaires</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">CIN</th>
+                                      <th scope="col">Nom</th>
+                                      <th scope="col">Prénom</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Password</th>
+                                      <th scope="col">Rôle</th>
+                                      <th scope="col">Actions</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let user of gestionnaires">
+                                      <td>{{ user.cin }}</td>
+                                      <td>{{ user.nom }}</td>
+                                      <td>{{ user.prenom }}</td>
+                                      <td>{{ user.email }}</td>
+                                      <td>{{ user.password }}</td>
+                                      <td>{{ user.role }}</td>
+                                      <td>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openConfirmationModal(user.id)">
+                                          Approver
+                                      </button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+        
+    </section>
+<br><br>
+
+      <!-- Etudiants -->
+      <section class="intro">
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+        
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Table Etudiants</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">CIN</th>
+                                      <th scope="col">Nom</th>
+                                      <th scope="col">Prénom</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Password</th>
+                                      <th scope="col">Rôle</th>
+                                      <th scope="col">Actions</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let user of etudiants">
+                                      <td>{{ user.cin }}</td>
+                                      <td>{{ user.nom }}</td>
+                                      <td>{{ user.prenom }}</td>
+                                      <td>{{ user.email }}</td>
+                                      <td>{{ user.password }}</td>
+                                      <td>{{ user.role }}</td>
+                                      <td>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openConfirmationModal(user.id)">
+                                          Approver
+                                      </button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+        
+    </section>
+
+      <!-- Enseignants -->
+      <section class="intro">
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+        
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Table Enseignants</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">CIN</th>
+                                      <th scope="col">Nom</th>
+                                      <th scope="col">Prénom</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Password</th>
+                                      <th scope="col">Rôle</th>
+                                      <th scope="col">Actions</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let user of enseignants">
+                                      <td>{{ user.cin }}</td>
+                                      <td>{{ user.nom }}</td>
+                                      <td>{{ user.prenom }}</td>
+                                      <td>{{ user.email }}</td>
+                                      <td>{{ user.password }}</td>
+                                      <td>{{ user.role }}</td>
+                                      <td>
+                                        <!-- Delete icon -->
+                                        <!-- Trash icon in red color -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openConfirmationModal(user.id)">
+                                          Approver
+                                      </button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+        
+    </section>
+    </div>
+
+    <!-- Data Array -->
+    
+
+    <!-- SweetAlert for confirmation -->
+    <div id="confirmDeleteModal"></div>
+  </div><!-- .animated -->
+</div>

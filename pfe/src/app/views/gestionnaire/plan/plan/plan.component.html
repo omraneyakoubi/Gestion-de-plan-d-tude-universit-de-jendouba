@@ -1,0 +1,250 @@
+
+
+<div class="blue-background text-center font-size-large">
+    Université de Jendouba
+  </div><br><br>
+<p>Bienvenue dans votre espace Plan D'etude.  ajouter un nouveau Plan D'etude, veuillez cliquer sur le bouton ci-dessous.</p>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="button" routerLink="/gestionnaire/addplan">Ajouter</button>
+</div>
+<br><br>
+<section class="intro">
+    <div class="content">
+        <div class="animated fadeIn">
+            <div class="row">
+    
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Table Plan</strong>
+                        </div>
+                        <div class="card-body">
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                            <th scope="col">Diplome</th>
+                                            <th scope="col">Nom du Plan</th>
+                                            <th scope="col">Année d'apparition</th>
+                                            <th scope="col">Spécialisation</th>
+                                            <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let plan of planArray">
+                                        <td>{{ plan.idplan }}</td>
+                                        <td>{{ plan.diplome }}</td>
+                                        <td>{{ plan.nomplan }}</td>
+                                        <td>{{ plan.anneeapp }}</td>
+                                        <td>{{ plan.spec }}</td>
+                                        <td>
+                                            <i class="fas fa-trash text-danger" (click)="deletePlan(plan)"></i> <!-- Trash icon in red color -->
+                                            <i class="fas fa-eye ml-2" (click)="plan.idplan && getUnits(plan.idplan)" data-toggle="modal" data-target="#exampleModalCenter"></i>
+                                            <i class="fas fa-edit ml-2" (click)="plan.idplan && getUnits(plan.idplan)"  [routerLink]="['/gestionnaire/updateplan', plan.idplan ]"></i>
+                                        </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    
+    
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+    
+</section>
+
+<!-- Modal for displaying units -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered large" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">IdUnite</th>
+                            <th scope="col">Nom unite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let u of unit">
+                            <td>{{ u.idunite }}</td>
+                            <td>{{ u.nomunite}}</td>
+                            <td>
+                                <i class="fas fa-eye ml-2" (click)="openElementModal(u.idunite)"></i>
+                                <i class="fas fa-edit ml-2" *ngIf="u.idunite !== undefined" (click)="getUnitById(u.idunite); selectedUnit = u;" data-toggle="modal" data-target="#updateUnitModal"></i>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade bd-example-modal-lg" id="elementModal"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="elementModalTitle">Elements for Unit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">IdElement</th>
+                            <th scope="col">Matier</th>
+                            <th scope="col">Coefficient</th>
+                            <th scope="col">Régime</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of element">
+                            <td>{{ e['idelement'] }}</td>
+                            <td>{{ e.matier1 }}</td>
+                            <td>{{ e.coffmatier1 }}</td>
+                            <td>{{ e.regime1 }}</td>
+                        </tr>
+                        <tr *ngFor="let e of element">
+                            <td></td>
+                            <td>{{ e.matier2 }}</td>
+                            <td>{{ e.coffmatier2 }}</td>
+                            <td>{{ e.regime2 }}</td>
+                        </tr>
+                        <tr *ngFor="let e of element">
+                            <td></td>
+                            <td>{{ e.matier3 }}</td>
+                            <td>{{ e.coffmatier3 }}</td>
+                            <td>{{ e.regime3 }}</td>
+                            <td>                               <i class="fas fa-edit ml-2" (click)="editElement(e)" clic ></i> <!-- Edit icon -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal for updating units -->
+<div class="modal fade" id="updateUnitModal" tabindex="-1" role="dialog" aria-labelledby="updateUnitModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateUnitModalTitle">Update Unit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="unitName">Nom de l'unité</label>
+                    <input type="text" class="form-control" id="unitName" [(ngModel)]="selectedUnit.nomunite" placeholder="Enter unit name">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="updateUnit()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for updating elements -->
+<!-- Modal for updating elements -->
+<div class="modal fade bd-example-modal-lg" id="updateElementModal" tabindex="-1" role="dialog" aria-labelledby="updateElementModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateElementModalTitle">Update Element</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form *ngIf="selectedElement">
+                    <div class="form-group">
+                        <label for="matier1">Matier1</label>
+                        <input type="text" class="form-control" id="matier1" [(ngModel)]="selectedElement.matier1" name="matier1" placeholder="Enter Matier1">
+                    </div>
+                    <div class="form-group">
+                        <label for="coffmatier1">Coffmatier1</label>
+                        <input type="number" class="form-control" id="coffmatier1" [(ngModel)]="selectedElement.coffmatier1" name="coffmatier1" placeholder="Enter Coffmatier1">
+                    </div>
+                    <div class="form-group">
+                        <label for="regime1">Regime1</label>
+                        <input type="text" class="form-control" id="regime1" [(ngModel)]="selectedElement.regime1" name="regime1" placeholder="Enter Regime1">
+                    </div>
+                    <div class="form-group">
+                        <label for="matier1">Matier2</label>
+                        <input type="text" class="form-control" id="matier1" [(ngModel)]="selectedElement.matier2" name="matier1" placeholder="Enter Matier1">
+                    </div>
+                    <div class="form-group">
+                        <label for="coffmatier1">Coffmatier2</label>
+                        <input type="number" class="form-control" id="coffmatier1" [(ngModel)]="selectedElement.coffmatier2" name="coffmatier1" placeholder="Enter Coffmatier1">
+                    </div>
+                    <div class="form-group">
+                        <label for="regime1">Regime2</label>
+                        <input type="text" class="form-control" id="regime1" [(ngModel)]="selectedElement.regime2" name="regime1" placeholder="Enter Regime1">
+                    </div>
+                    <!-- Add fields for other properties as needed -->
+                </form>
+            </div>
+            
+            
+            
+            
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="updateElement()" >Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

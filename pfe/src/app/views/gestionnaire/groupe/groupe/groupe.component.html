@@ -1,0 +1,54 @@
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmation de suppression</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Êtes-vous sûr de vouloir supprimer ce groupe?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-danger" (click)="confirmDelete()">Supprimer</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="blue-background text-center font-size-large">
+  Université de Jendouba
+</div><br><br>
+
+<p>Bienvenue dans votre espace de gestion des Groupes. Pour ajouter un nouveau Groupe, veuillez cliquer sur le bouton ci-dessous.</p>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="button" routerLink="/gestionnaire/addgroupe">Ajouter</button>
+</div>
+<br><br>
+<table class="table mb-0">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom prenom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Specialite</th>
+            <th scope="col">Nb Groupe</th>
+            <th scope="col">Actions</th> <!-- Added Actions column -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let groupe of groupes">
+            <th scope="row" style="color: #666666;">{{ groupe.id }}</th>
+            <td>{{ groupe.nomprenom}}</td>
+            <td>{{ groupe.email }}</td>
+            <td>{{ groupe.specialite }}</td>
+            <td>{{ groupe.nbgroupe }}</td>
+            <td>
+                <i class="fas fa-trash text-danger" (click)="deleteGroupe(groupe.id)"></i> <!-- Trash icon in red color with delete action -->
+                <i class="fas fa-eye ml-2" (click)="viewGroupeDetails(groupe.id)"></i> <!-- View icon with view action -->
+                <i class="fas fa-edit ml-2"  [routerLink]="['/gestionnaire/updategroupe', groupe.id]"></i> <!-- Edit icon with edit action -->
+            
+              </td>
+        </tr>
+    </tbody>
+</table>

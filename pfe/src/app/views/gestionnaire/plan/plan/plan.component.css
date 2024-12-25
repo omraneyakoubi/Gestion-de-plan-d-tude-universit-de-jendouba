@@ -1,0 +1,13 @@
+.blue-background {
+    background-color: #4070f4;
+    color: white;
+    padding: 20px; /* Adjust padding as needed */
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .font-size-large {
+    font-size: 24px; /* Adjust font size as needed */
+  }

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un Plan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-add {
+      margin-top: 10px;
+      margin-right: 10px;
+      background-color: #28a745;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .add-matieres {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .add-coff {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .unit-list {
+      margin-top: 20px;
+    }
+
+    .unit-list ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .unit-list ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="text-center">Préparation De plan d'étude</h2>
+    <!-- Step 1: Add Plan -->
+    <form class="form-card" *ngIf="step1">
+     
+      <div class="form-group">
+        <label for="diplome">Nom Diplome<span class="text-danger"> *</span></label>
+        <select class="form-select form-select-lg mb-3" id="diplome" name="diplome" [(ngModel)]="plan.diplome">
+          <option value="">Choisir un diplôme</option>
+          <option *ngFor="let diplome of diplomes" [value]="diplome">{{ diplome }}</option>
+      </select>      </div>
+      <div class="form-group">
+        <label for="nomplan">Nom Plan<span class="text-danger"> *</span></label>
+        <input type="text" id="nomplan" name="nomplan" placeholder="Nom Plan" [(ngModel)]="plan.nomplan">
+      </div>
+      <div class="form-group">
+        <label for="anneeapp">Année d'application<span class="text-danger"> *</span></label>
+        <input type="number" id="anneeapp" name="anneeapp" placeholder="Année d'application" [(ngModel)]="plan.anneeapp">
+      </div>
+      <div class="form-group">
+        <label for="spec">Spécialité <span class="text-danger"> *</span></label>
+        <input type="text" id="spec" name="spec" placeholder="Spécialité" [(ngModel)]="plan.spec">
+      </div>
+      <button type="button" class="btn btn-primary btn-block" (click)="nextStep()" >Next</button>
+
+    </form>
+
+    <!-- Step 2: Add Unit -->
+    <div *ngIf="step2">
+      <form class="form-card">
+        <div class="form-group">
+          <label for="unite">Unité<span class="text-danger">*</span></label>
+          <input type="text" id="unite" name="unite" placeholder="Unité" [(ngModel)]="unit.nomunite" required>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" (click)="nextStep()">Ajouter Un unite</button>
+        <button type="button" class="btn btn-danger btn-block" (click)="cancel()">Annuler</button>
+      </form>
+
+      <div class="unit-list" *ngIf="units.length > 0">
+        <h3>Unités ajoutées :</h3>
+        <ul>
+          <li *ngFor="let u of units">{{ u.nomunite }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Step 3: Add Element -->
+    <form class="form-card" *ngIf="step3">
+      <h3 class="text-center">Ajouter les éléments</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Matière</th>
+            <th>Coefficient</th>
+            <th>Régime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let matiere of [1, 2, 3]">
+            <td>
+              <input type="text" id="matiere{{matiere}}" name="matiere{{matiere}}" placeholder="Matière {{matiere}}" [(ngModel)]="element['matier' + matiere]">
+            </td>
+            <td>
+              <input type="number" id="coffmatiere{{matiere}}" name="coffmatiere{{matiere}}" placeholder="Coefficient {{matiere}}" [(ngModel)]="element['coffmatier' + matiere]">
+            </td>
+            <td>
+              <input type="text" id="regime{{matiere}}" name="regime{{matiere}}" placeholder="Régime {{matiere}}" [(ngModel)]="element['regime' + matiere]">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-add" (click)="addPlanAndGoToStep2(); addUnit()">+ Ajouter une autre unité</button>
+ 
+    </form>
+  </div>
+</body>
+
+</html>
+
+
+

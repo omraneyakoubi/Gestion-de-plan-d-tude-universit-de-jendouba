@@ -1,0 +1,105 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un Groupe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      padding: 0px 20px;
+      font-size: 16px;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .text-danger {
+      color: #dc3545;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="text-center">Ajouter un Groupe</h2>
+    <form class="form-card" (ngSubmit)="addgroupe()">
+      <div class="form-group">
+        <label for="nomprenom">Nom et Prénom<span class="text-danger"> *</span></label>
+        <input type="text" id="nomprenom" name="nomprenom" placeholder="Nom et Prénom" [(ngModel)]="groupe.nomprenom" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email<span class="text-danger"> *</span></label>
+        <input type="email" id="email" name="email" placeholder="Email" [(ngModel)]="groupe.email" required>
+      </div>
+      <div class="form-group">
+        <label for="specialite">Spécialité<span class="text-danger"> *</span></label>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" [(ngModel)]="groupe.specialite" name="diplome">
+              <option [ngValue]="null" disabled selected>select</option>
+              <option value="Droit" selected>Droit</option>
+              <option value="Economie">Economie</option>
+              <option value="Gestion">Gestion</option>
+              <option value="Informatique de Gestion">Informatique de Gestion</option>
+            </select>
+            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+        </div>      
+      <div class="form-group">
+        <label for="nbgroupe">Nombre de Groupes<span class="text-danger"> *</span></label>
+        <input type="text" id="nbgroupe" name="nbgroupe" placeholder="Nombre de Groupes" [(ngModel)]="groupe.nbgroupe" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+    </form>
+  </div>
+</body>
+
+</html>

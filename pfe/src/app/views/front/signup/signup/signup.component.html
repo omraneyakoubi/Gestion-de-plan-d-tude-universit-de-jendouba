@@ -1,0 +1,45 @@
+<br><br><br><br>
+
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+    </div>
+    <div class="form-container sign-in-container">
+        <form (ngSubmit)="signUp()" #signupForm="ngForm">
+            <h1>Créer un compte</h1>
+
+            <input type="text" placeholder="CIN" name="nomprenom" [(ngModel)]="user.cin" pattern="[0-9]{8}" required #cin="ngModel"/>
+
+            <input type="text" placeholder="Votre Nom" name="nom" [(ngModel)]="user.nom" required #nom="ngModel"/>
+            <!-- Error messages for nomprenom input -->
+            <input type="text" placeholder="Votre prenom" name="prenom" [(ngModel)]="user.prenom" required #prenom="ngModel"/>
+
+
+            <input type="email" placeholder="Email" name="email" [(ngModel)]="user.email" required #email="ngModel"/>
+            <!-- Error messages for email input -->
+
+            <input type="password" placeholder="Mot de Passe" name="mdp" [(ngModel)]="user.password" required #mdp="ngModel"/>
+            <!-- Error messages for mdp input -->
+
+            <select name="Role" class="selectpicker" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"  [(ngModel)]="user.role" required #role="ngModel">
+                <option value="">Veuillez choisir votre rôle</option>
+                <option value="gestionnaire">Gestionnaire</option>
+                <option value="etudiant">Étudiant</option>
+                <option value="enseignant">Enseignant</option>
+            </select>
+            <!-- Error messages for role select -->
+
+            <a routerLink="/login">Si vous avez déjà un compte ! S'authentifier ?</a>
+            <button type="submit">S'inscrire</button>
+
+            <!-- Display general error message if the form is invalid -->
+          
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+        </div>
+    </div>
+</div>
+<footer>
+    <p>Created with <i class="bbbbb">Yakoubi Omrane</i></p>
+</footer>

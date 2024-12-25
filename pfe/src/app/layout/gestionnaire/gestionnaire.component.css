@@ -1,0 +1,244 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #eef5fe;
+  min-height: 100vh;
+}
+
+.content {
+    margin-left: 250px; /* Width of sidebar */
+    margin-top: 56px; /* Height of navbar */
+    padding: 20px;
+}
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 100%;
+  background: #fff;
+  padding: 15px 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.sidebar.close {
+  width: 75px;
+}
+
+.sidebar .logo_items {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar .logo_name {
+  font-size: 22px;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.sidebar.close .logo_name,
+.sidebar.close #lock-icon,
+.sidebar.close #sidebar-close {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar #lock-icon,
+.sidebar #sidebar-close {
+  padding: 10px;
+  color: #4070f4;
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: -4px;
+  transition: all 0.3s ease;
+}
+
+.sidebar #sidebar-close {
+  display: none;
+  color: #333;
+}
+
+.sidebar .menu_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 40px;
+  overflow-y: auto;
+  height: calc(100% - 82px);
+}
+
+.sidebar .menu_container::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar .menu_title {
+  position: relative;
+  height: 50px;
+  width: 55px;
+}
+
+.sidebar .menu_title .title {
+  margin-left: 15px;
+  transition: all 0.3s ease;
+}
+
+.sidebar.close .menu_title .title {
+  opacity: 0;
+}
+
+.sidebar .menu_title .line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3px;
+  width: 20px;
+  border-radius: 25px;
+  background: #aaa;
+  transition: all 0.3s ease;
+}
+
+.sidebar.close .menu_title .line {
+  opacity: 1;
+}
+
+.sidebar .item {
+  list-style: none;
+}
+
+.sidebar .link {
+  text-decoration: none;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #707070;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .link:hover {
+  color: #fff;
+  background-color: #4070f4;
+}
+
+.sidebar .link span {
+  white-space: nowrap;
+}
+
+.sidebar .link i {
+  height: 50px;
+  min-width: 55px;
+  display: flex;
+  font-size: 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.sidebar .sidebar_profile {
+  padding-top: 15px;
+  margin-top: 15px;
+  gap: 15px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .sidebar_profile .name {
+  font-size: 18px;
+  color: #333;
+}
+
+.sidebar .sidebar_profile .email {
+  font-size: 15px;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  width: calc(100% - 270px);
+  margin-left: 270px;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar #sidebarToggleTop {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: #333;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.navbar .dropdown-item {
+  color: #333;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .dropdown-divider {
+  border-top: 1px solid #dee2e6;
+}
+
+.navbar .img-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+  .navbar {
+    width: calc(100% - 230px);
+    margin-left: 230px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .sidebar {
+    left: -100%;
+  }
+
+  .sidebar.close {
+    left: -100%;
+  }
+
+  .sidebar #sidebar-close {
+    display: block;
+  }
+
+  .sidebar #lock-icon {
+    display: none;
+  }
+
+  .navbar {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .navbar #sidebarToggleTop {
+    display: block;
+  }
+}

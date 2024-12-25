@@ -1,0 +1,91 @@
+<div class="blue-background text-center font-size-large">
+  Université de Jendouba
+</div><br><br>
+<!-- Calendar section -->
+<p>Bienvenue dans votre espace de Gestion du Calendrier. Pour ajouter un nouvel événement, veuillez cliquer sur le bouton ci-dessous.</p>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <button class="btn btn-primary me-md-2" type="button" routerLink="/gestionnaire/addcall">Ajouter</button>
+</div>
+<br>
+
+<div class="row">
+  <!-- EXAMAN section -->
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <strong class="card-title">EXAMAN</strong>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nom et Prenom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Date</th>
+              <th scope="col">Salle</th>
+              <th scope="col">Nom de l'exman</th>
+              <th scope="col">Type</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of examan">
+              <td>{{ item.id }}</td>
+              <td>{{ item.nomprenom }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.dateexam }}</td>
+              <td>{{ item.salle }}</td>
+              <td>{{ item.nomexam }}</td>
+              <td>{{ item.typeexam }}</td>
+              <td>
+                <i class="fas fa-trash text-danger" (click)="deleteEvent(item.id)"></i>
+                <i class="fas fa-edit ml-2"  [routerLink]="['/gestionnaire/updatecall', item.id]"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> <!-- /.card-body -->
+    </div> <!-- /.card -->
+  </div> <!-- /.col-lg-12 -->
+
+  <!-- DS section -->
+  <div class="col-lg-12 mt-4">
+    <div class="card">
+      <div class="card-header">
+        <strong class="card-title">DS</strong>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nom et Prenom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Date</th>
+              <th scope="col">Salle</th>
+              <th scope="col">Nom de l'exman</th>
+              <th scope="col">Type</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of ds">
+              <td>{{ item.id }}</td>
+              <td>{{ item.nomprenom }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.dateexam }}</td>
+              <td>{{ item.salle }}</td>
+              <td>{{ item.nomexam }}</td>
+              <td>{{ item.typeexam }}</td>
+              <td>
+                <i class="fas fa-trash text-danger" (click)="deleteEvent(item.id)"></i>
+                <i class="fas fa-edit ml-2"  [routerLink]="['/gestionnaire/updatecall', item.id]"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> <!-- /.card-body -->
+    </div> <!-- /.card -->
+  </div> <!-- /.col-lg-12 -->
+</div> <!-- /.row -->

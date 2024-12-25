@@ -1,0 +1,74 @@
+<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+      <div class="card">
+        <h5 class="text-center mb-4">Update Calendar Event</h5>
+        <form class="form-card" (ngSubmit)="updateCalanderier()">
+          <!-- Common fields -->
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label for="nomprenom" class="form-control-label px-3">Nom et Prénom<span class="text-danger"> *</span></label>
+              <input [(ngModel)]="calanderier.nomprenom" type="text" id="nomprenom" name="nomprenom" placeholder="">
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label for="email" class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
+              <input [(ngModel)]="calanderier.email" type="email" id="email" name="email" placeholder="">
+            </div>
+          </div>
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label for="dateexam" class="form-control-label px-3">Date de l'examen<span class="text-danger"> *</span></label>
+              <input [(ngModel)]="calanderier.dateexam" type="datetime-local" id="dateexam" name="dateexam">
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label for="salle" class="form-control-label px-3">Salle<span class="text-danger"> *</span></label>
+              <input [(ngModel)]="calanderier.salle" type="text" id="salle" name="salle" placeholder="">
+            </div>
+          </div>
+          <!-- Role field -->
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label for="typeexam" class="form-control-label px-3">Role<span class="text-danger"> *</span></label>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" [(ngModel)]="calanderier.role" id="typeexam" name="typeexam">
+              <option value="">--Veuillez choisir une option--</option>
+              <option value="etudiant">Etudiant</option>
+              <option value="enseignant">enseignant</option>
+            </select>
+          </div>
+          <!-- Role-specific fields -->
+          <div *ngIf="calanderier.role === 'etudiant'">
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label for="nomexam" class="form-control-label px-3">Nom examen<span class="text-danger"> *</span></label>
+                <input [(ngModel)]="calanderier.nomexam" type="text" id="nomexam" name="nomexam" placeholder="">
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label for="nomexam" class="form-control-label px-3">Groupe<span class="text-danger"> *</span></label>
+                <input [(ngModel)]="calanderier.groupe" type="text" id="nomexam" name="nomexam" placeholder="Groupe">
+              </div>
+            </div>
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label for="typeexam" class="form-control-label px-3">Type de l'examen<span class="text-danger"> *</span></label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" [(ngModel)]="calanderier.typeexam" id="typeexam" name="typeexam">
+                  <option value="">--Veuillez choisir une option--</option>
+                  <option value="DS">DS</option>
+                  <option value="EXAMAN">EXAMAN</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- Common fields -->
+          <!-- Buttons -->
+          <div class="row justify-content-end">
+            <div class="form-group col-sm-6">
+              <button type="submit" class="btn-block btn-primary">Update</button>
+            </div>
+            <div class="form-group col-sm-6">
+              <button type="button" class="btn-block btn-danger" routerLink="/admin/reunion">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

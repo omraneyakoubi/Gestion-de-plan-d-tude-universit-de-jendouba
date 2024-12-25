@@ -1,0 +1,43 @@
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card">
+                <h5 class="text-center mb-4">Update Diploma</h5>
+                <form [formGroup]="diplomeForm" (ngSubmit)="updateDiplome()">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3" for="code">Code <span class="text-danger">*</span></label>
+                            <input type="text" id="code" class="form-control" formControlName="code" placeholder="Code">
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3" for="nomdiplome">Nom de diplome <span class="text-danger">*</span></label>
+                            <input type="text" id="nomdiplome" class="form-control" formControlName="nomdiplome" placeholder="Nom de diplome">
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3" for="niveau">Niveau de diplome <span class="text-danger">*</span></label>
+                            <select class="form-select form-select-lg mb-3" id="niveau" formControlName="niveau"  (change)="onNiveauChange()">
+                                <option value="">Niveau de diplome</option>
+                                <option value="Licence">Licence</option>
+                                <option value="Master">Master</option>                            </select>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3" for="niveauuniv">Niveau universitaire <span class="text-danger">*</span></label>
+                            <select class="form-select form-select-lg mb-3" id="niveauuniv" formControlName="niveauuniv">
+                                <option *ngFor="let niveau of niveaux" [value]="niveau">{{ niveau }}</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="form-group col-sm-6">
+                            <button type="submit" class="btn-block btn-primary">Update</button>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <button type="button" class="btn-block btn-danger" >Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

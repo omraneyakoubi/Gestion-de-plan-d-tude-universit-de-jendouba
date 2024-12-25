@@ -1,0 +1,29 @@
+<!-- Enseignant section -->
+<div class="card">
+  <div class="card-header">
+    <strong class="card-title">Enseignant</strong>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nom et Prenom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Date</th>
+          <th scope="col">Salle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of enseignantEvents">
+          <td>{{ item.id }}</td>
+          <td>{{ item.nomprenom }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.dateexam }}</td>
+          <td>{{ item.salle }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div> <!-- /.card-body -->
+</div> <!-- /.card -->

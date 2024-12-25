@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mise à jour d'un Plan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-add {
+      margin-top: 10px;
+      margin-right: 10px;
+      background-color: #28a745;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .add-matieres {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .add-coff {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .unit-list {
+      margin-top: 20px;
+    }
+
+    .unit-list ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .unit-list ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="text-center">Mise à jour du plan d'étude</h2>
+  
+    <!-- Step 1: Plan Update -->
+    <div *ngIf="!unitSelected && !elementSelected">
+      <h3>Mise à jour du plan</h3>
+      <!-- Plan form -->
+      <div class="form-card">
+        <div class="form-group">
+          <label for="diplome">Diplome:</label>
+          <input type="text" [(ngModel)]="plan.diplome" name="diplome" disabled>
+        </div>
+        <div class="form-group">
+          <label for="nomplan">Nom du plan:</label>
+          <input type="text" [(ngModel)]="plan.nomplan" name="nomplan">
+        </div>
+        <div class="form-group">
+          <label for="anneeapp">Année d'application:</label>
+          <input type="number" [(ngModel)]="plan.anneeapp" name="anneeapp">
+        </div>
+        <div class="form-group">
+          <label for="spec">Spécialité:</label>
+          <input type="text" [(ngModel)]="plan.spec" name="spec">
+        </div>
+        <button type="button" class="btn btn-primary btn-block" (click)="updatePlan()">Enregistrer les modifications</button>
+      </div>
+    </div>
+  
+    <!-- Step 2: Unit Update -->
+   
+  
+    <!-- Navigation buttons -->
+ 
+  </div>
+  
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!-- utilisateurs.component.html -->
+
+<div class="blue-background text-center font-size-large">
+  Université de Jendouba
+</div><br><br>
+<p>Bienvenue dans votre espace de Gere Diplome.  ajouter un nouveau Diplome, veuillez cliquer sur le bouton ci-dessous.</p>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="button"routerLink="/gestionnaire/adddiplome">Ajouter</button>
+  </div>
+<br><br>
+
+
+<section class="intro">
+  <div class="content">
+      <div class="animated fadeIn">
+          <div class="row">
+  
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <strong class="card-title">Table Diploms</strong>
+                      </div>
+                      <div class="card-body">
+                          <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Nom de diplome</th>
+                                <th scope="col">Niveau de diplome</th>
+                                <th scope="col">Niveau universitaire</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let diplome of dataarray">
+                                <td>{{ diplome.code }}</td>
+                                <td>{{ diplome.nomdiplome }}</td>
+                                <td>{{ diplome.niveau }}</td>
+                                <td>{{ diplome.niveauuniv }}</td>
+                                <td>  <i class="fas fa-trash text-danger" (click)="deleteDiplome(diplome)"></i> <!-- Trash icon in red color -->
+                                  <i class="fas fa-eye ml-2"></i> <!-- View icon -->
+                                  <i class="fas fa-edit ml-2"  [routerLink]="['/gestionnaire/updatediplome', diplome.id]"></i></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+  
+  
+          </div>
+      </div><!-- .animated -->
+  </div><!-- .content -->
+  
+</section>
+
